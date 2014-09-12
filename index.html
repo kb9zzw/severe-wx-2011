@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : GoodLife 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20121013
+
+-->
+<html>
+<head>
+<link rel="stylesheet" href="css/slidorion.css" />
+<script src="js/jquery.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/jquery.slidorion.js"></script>
+
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.css' rel='stylesheet' />
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.0.2/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <style>
+    body { margin:0; padding:0; }
+  </style>
+<link rel="stylesheet" href="css/leaflet.fullscreen.css"/>
+<script src="js/Leaflet.fullscreen.js"></script>
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>2011 Severe Weather Summary</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+<link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="index.html">2011 Severe Weather Summary</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="current_page_item"><a href="#" accesskey="1" title="">Home</a></li>
+				<li><a href="tornado.html" accesskey="2" title="">Tornadoes</a></li>
+				<li><a href="hail.html" accesskey="3" title="">Hail</a></li>
+        <li><a href="tropical.html" accesskey="4" title="">Tropical Storms</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	<div id="footer-content">
+    <div id="fbox1">
+      <h2><span>An active</span> year</h2>
+      <p>2011 will long be remembered as an active year for severe weather across the United States, which included violent tornadoes, numerous hail storms and damaging tropical weather.  By the numbers, the country experienced:
+      <ul class="style4">
+        <li>343 tornadoes from Apr 25-28, the largest outbreak ever</li>
+        <li>199 tornadoes on April 27 alone</li>
+        <li>$3 billion in potential cost to rebuild Joplin, MO</li>
+        <li>9417 large hail events</li>
+        <li>550 tornado-related fatalities</li>
+        <li>$7.3 billion estimated damages by Hurricane Irene</li> 
+       </ul>
+      </p>
+      <p style="margin-top: 5px;">This site presents an interactive summary of the year's violent weather</p>.
+    </div>
+		<div id="fbox2">
+      <h2><span>Notable</span> events</h2>
+      <div id="slidorion" class="slidorion">
+            <div class="slider">
+              <div class="slide"><img src="images/joplin.jpg" /></div>
+              <div class="slide"><img src="images/record_hail.jpg" /></div>
+              <div class="slide"><img src="images/tuscaloosa.jpg" /></div>
+              <div class="slide"><img src="images/irene-landfall.jpg" /></div>
+            </div>
+
+        <div class="accordion">
+          <div class="header">Joplin Tornado</div>
+          <div class="content">Damage photograph from the May 22, 2011 EF-5 tornado that hit Joplin, MO. <p style="margin-top: 5px;">Full details: <a href="http://www.crh.noaa.gov/sgf/?n=event_2011may22_summary" title="NOAA/NWS Joplin Tornado Event Summary">NOAA/NWS Joplin Tornado</a>.</p></div>
+          <div class="header">Record Hailstone</div>
+          <div class="content">Oklahoma's largest hailstone, measuring six inches, fell on May 23, 2011 near Gotebo, OK.  <p style="margin-top: 5px;">Full details: <a href="http://www.srh.noaa.gov/oun/?n=events-20110523-recordhail" title="NOAA/NWS Gotebo Hail Event">NOAA/NWS Gotebo Hail</a>.</p></div>
+          <div class="header">Tuscaloosa Tornado</div>
+          <div class="content">Damage trail left by a long-lived EF-4 tornado through Tuscaloosa and Birmingham, AL on April 27, 2011. <p style="margin-top: 5px;">Full details: <a href="http://www.srh.noaa.gov/bmx/?n=event_04272011tuscbirm" title="NOAA/NWS Tuscaloosa-Birmingham Tornado">NOAA/NWS Tuscaloosa Tornado</a>.</p></div>
+          <div class="header">Hurricane Irene</div>
+          <div class="content">Hurricane Irene made landfall near New York City on August 28, 2011.  <p style="margin-top: 5px;">Full details: <a href="http://www.noaa.gov/extreme2011/irene.html" title="NOAA Hurricane Irene">NOAA Hurricane Irene</a>.</div>
+        </div>
+      </div>
+    </div>
+	</div>
+</div>
+<div id="page-wrapper">
+	<div id="page">
+		<div id="content">
+			<div>
+				<h2>About this project</h2>
+				<p>This website was created by <a href="mailto:jdburrou@ncsu.edu">Jon Burroughs</a> as an assignment for <a href="http://courses.ncsu.edu/gis515/lec/651/" title="NCSU GIS 515">Computer Cartography (GIS 515)</a> at <a href="http://gis.ncsu.edu/academic/how_to_apply/how_to_apply.php" title="NCSU GIST Program">North Carolina State University</a>.  
+        <p><strong>Sources</strong> for  data, photographs were provided by <a href="http://www.noaa.gov" title="NOAA">NOAA</a>, specifically the following sites:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.spc.noaa.gov/gis/svrgis/" title="SPC GIS Data">Storm Prediction Center - GIS Data</a></li>
+          <li><a href="http://www.nhc.noaa.gov/gis" title="NHC GIS Data">National Hurricane Center - GIS Data</a></li>
+          <li><a href="http://www.noaa.gov/extreme2011/" title="NOAA: Extreme Weather 2011">NOAA Extreme Weather 2011</a></li>
+          <li><a href="http://www.weather.gov/" title="National Weather Service">National Weather Service</a></li>
+        </ul>
+        </p>
+				<p>&nbsp;</p>
+        <p><strong>Technologies</strong> used in the creation of this project, include:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.mapbox.com" title="MapBox">MapBox</a> - used for interactive mapping</li>
+          <li><a href="http://drive.google.com" title="Google Drive">Google Drive</a> - used for charting</li>
+          <li><a href="http://www.esri.com" title="ESRI">ESRI ArcGIS</a> - used for initial data processing</li>
+          <li><a href="http://www.slidorion.com/" title="Slidorion">Slidorion</a> - used for image slider</a>
+          <li><a href="http://www.freecsstemplates.org/" title="FreeCSSTemplates">FreeCSSTemplates</a> - used for page layout and design</li>
+        </ul>
+
+			</div>
+		</div>
+		<div id="sidebar">
+			<h2>Maps and charts</h2>
+        <ul class="style3">
+				<li><a href="tornado.html" title="2011 Tornado Summary"><img src="images/tornado-thumb.png" width="80" height="80" alt="tornado track thumbnail" /></a>
+					<p>2011 map of tornado activity, with charts and statistics. </p>
+          <p class="posted">Created July 21, 2013</p>
+				</li>
+				<li><a href="hail.html" title="2011 Hail Summary"><img src="images/hail-thumb.png" width="80" height="80" alt="hail thumbnail" /></a>
+					<p>2011 hail events by county map. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+        <li><a href="tropical.html" title="2011 Tropical Hurricanes"><img src="images/tropical-thumb.png" width="80" height="80" alt="tropical thumbnail" /></a>
+					<p>2011 tropical storms and hurricanes. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+			</ul>			
+		</div>
+	</div>
+</div>
+
+<script type='text/javascript'>
+$(document).ready(function(){
+	$('#slidorion').slidorion({
+    autoPlay: true,
+    hoverPause: true,
+    effect: 'slideLeft',
+  });
+});
+</script>
+</body>
+</html>

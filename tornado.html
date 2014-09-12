@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : GoodLife 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20121013
+
+-->
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <link rel="stylesheet" href="css/leaflet.fullscreen.css"/>
+  <script src="js/Leaflet.fullscreen.js"></script>
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>2011 Severe Weather Summary</title>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+  <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+  <!--[if IE 6]>
+    <link href="default_ie6.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  
+  <style type="text/css">
+    body { margin:0; padding:0; }
+    #map { width:700px; height:500px; }
+
+    .my-legend .legend-title {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 90%;
+      }
+    .my-legend .legend-scale ul {
+      margin: 0;
+      padding: 0px;
+      float: left;
+      list-style: none;
+      }
+    .my-legend .legend-scale ul li {
+      display: block;
+      float: left;
+      width: 24px;
+      margin-bottom: 4px;
+      margin-right: 1px;
+      text-align: center;
+      font-size: 80%;
+      list-style: none;
+      }
+    .my-legend ul.legend-labels li span {
+      display: block;
+      float: left;
+      height: 15px;
+      width: 24px;
+      }
+    .my-legend .legend-source {
+      font-size: 70%;
+      color: #999;
+      clear: both;
+      }
+    .my-legend a {
+      color: #777;
+      }
+     .my-legend .legend-subtitle {
+        font-size: 70%;
+        color: #000;
+        clear: both;
+      }
+          #map-ui {
+
+    }
+
+    #map-ui ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map-ui a {
+      font-size: 13px;
+      background: #FFF;
+      color: #3C4E5A;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #BBB;
+      border-bottom-width: 0;
+      min-width: 138px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+  #map-ui a:hover {
+    background: #ECF5FA;
+  }
+
+  #map-ui li:last-child a {
+      border-bottom-width: 1px;
+      -webkit-border-radius: 0 0 3px 3px;
+      border-radius: 0 0 3px 3px;
+  }
+
+  #map-ui li:first-child a {
+      -webkit-border-radius: 3px 3px 0 0;
+      border-radius: 3px 3px 0 0;
+  }
+
+  #map-ui a.active {
+      background: #3887BE;
+      border-color: #3887BE;
+      border-top-color: #FFF;
+      color: #FFF;
+  }
+
+  #map-ui li:first-child a.active {
+      border-top-color: #3887BE;
+  }
+
+  #map .map-fullscreen {
+      background-color: #28353D;
+  }
+  </style>
+
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>2011 Severe Weather Summary</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+<link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="index.html">2011 Severe Weather Summary</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="">Home</a></li>
+				<li class="current_page_item"><a href="#" accesskey="2" title="">Tornadoes</a></li>
+				<li><a href="hail.html" accesskey="3" title="">Hail</a></li>
+        <li><a href="tropical.html" accesskey="4" title="">Tropical Storms</a></li>
+			</ul>
+    </div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	<div id="footer-content">
+		<h2 style="margin: 10px; padding: 0;"><span>2011</span> Tornadoes</h2>
+    <div id="map-wrapper">
+      <div id="map"></div>
+      <div id="map-right" >
+        <h3>Overview</h3>
+        <p>This interactive map shows 2011 tornado track information, color coded by Fujita scale.  Mouse over a tornado track to show summary information.  Tornadoes with fatalities are indicated with a red dot.</p>
+        <div id="navigation">
+        <h3 style="margin-top: 15px;">Zoom to Notable Events</h3>
+        <ul class="style4">
+        <li><a href='#' data-position='33.2097,-87.5692'>Apr 27 - Tuscaloosa / Birmingham, AL</a></li>
+        <li><a href='#' data-position='37.0482,-94.5131'>May 22 - Joplin, MO Tornado</a></li>
+        <li><a href='#' data-position='35.4675,-97.5161'>May 24 - Oklahoma City, OK</a></li>
+        </ul>
+        </div>
+        <h3 style="margin-top: 15px;">Source</h3>
+        <p>Data for this map was obtained from: <br /><a href="http://www.spc.noaa.gov/gis/svrgis/" title="NOAA/SPC GIS Data">NOAA Storm Prediction Center</a>.</p>
+      </div>
+    </div>
+    <div id="fbox1" style="width: 1000px;">
+      <h2>Historical Data</h2>
+      <div id="chart1" style="display: inline-block;">
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AitX4fjKVz2sdGFwMjUwQ29obkdfcDVxYWRzbXh5eWc&transpose=0&headers=1&range=A1%3AB63&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Count","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","title":"Tornado Count by Year","animation":{"duration":500},"legend":"none","useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"slantedTextAngle":90,"slantedText":true,"minValue":null,"gridlines":{"count":"6"},"viewWindow":{"min":null,"max":null},"maxValue":null},"tooltip":{},"isStacked":false,"width":320,"height":240},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"AreaChart","chartName":"Chart 1"} </script>
+      </div>
+      <div id="chart2" style="display: inline-block;">
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AitX4fjKVz2sdHpvVGpGUFVTVC1GTjVZVUtqaXdjWlE&transpose=0&headers=1&range=A1%3AB63&gid=0&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"vAxes":[{"title":"Count","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"series":{"0":{"color":"#ff0000"}},"title":"Tornado Fatalities by Year","booleanRole":"certainty","animation":{"duration":500},"legend":"none","useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Year","slantedTextAngle":90,"slantedText":true,"minValue":null,"gridlines":{"count":"6"},"viewWindow":{"min":null,"max":null},"maxValue":null},"isStacked":false,"tooltip":{},"width":320,"height":240},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"AreaChart","chartName":"Chart 1"} </script>
+      </div>
+      <div id="chart3" style="display: inline-block;">
+      <script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/spreadsheet/tq?key=0AitX4fjKVz2sdENQNGoteFNuWjNoZi1DY2NadkZIUFE&transpose=0&headers=1&range=A1%3AB63&gid=0&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"vAxes":[{"title":"Count","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"series":{"0":{"color":"#38761d"}},"title":"Tornado Injuries by Year","booleanRole":"certainty","animation":{"duration":500},"legend":"none","useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Year","slantedTextAngle":90,"slantedText":true,"minValue":null,"gridlines":{"count":"6"},"viewWindow":{"min":null,"max":null},"maxValue":null},"isStacked":false,"tooltip":{},"width":320,"height":240},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"AreaChart","chartName":"Chart 1"} </script>
+      </div>
+    </div>
+</div>
+<div id="page-wrapper">
+	<div id="page">
+		<div id="content">
+			<div>
+				<h2>About this project</h2>
+				<p>This website was created by <a href="mailto:jdburrou@ncsu.edu">Jon Burroughs</a> as an assignment for <a href="http://courses.ncsu.edu/gis515/lec/651/" title="NCSU GIS 515">Computer Cartography (GIS 515)</a> at <a href="http://gis.ncsu.edu/academic/how_to_apply/how_to_apply.php" title="NCSU GIST Program">North Carolina State University</a>.  
+        <p><strong>Sources</strong> for  data, photographs were provided by <a href="http://www.noaa.gov" title="NOAA">NOAA</a>, specifically the following sites:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.spc.noaa.gov/gis/svrgis/" title="SPC GIS Data">Storm Prediction Center - GIS Data</a></li>
+          <li><a href="http://www.nhc.noaa.gov/gis" title="NHC GIS Data">National Hurricane Center - GIS Data</a></li>
+          <li><a href="http://www.noaa.gov/extreme2011/" title="NOAA: Extreme Weather 2011">NOAA Extreme Weather 2011</a></li>
+          <li><a href="http://www.weather.gov/" title="National Weather Service">National Weather Service</a></li>
+        </ul>
+        </p>
+				<p>&nbsp;</p>
+        <p><strong>Technologies</strong> used in the creation of this project, include:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.mapbox.com" title="MapBox">MapBox</a> - used for interactive mapping</li>
+          <li><a href="http://drive.google.com" title="Google Drive">Google Drive</a> - used for charting</li>
+          <li><a href="http://www.esri.com" title="ESRI">ESRI ArcGIS</a> - used for initial data processing</li>
+          <li><a href="http://www.slidorion.com/" title="Slidorion">Slidorion</a> - used for image slider</a>
+          <li><a href="http://www.freecsstemplates.org/" title="FreeCSSTemplates">FreeCSSTemplates</a> - used for page layout and design</li>
+        </ul>
+
+			</div>
+		</div>
+		<div id="sidebar">
+			<h2>Maps and charts</h2>
+        <ul class="style3">
+				<li><a href="tornado.html" title="2011 Tornado Summary"><img src="images/tornado-thumb.png" width="80" height="80" alt="tornado track thumbnail" /></a>
+					<p>2011 map of tornado activity, with charts and statistics. </p>
+          <p class="posted">Created July 21, 2013</p>
+				</li>
+				<li><a href="hail.html" title="2011 Hail Summary"><img src="images/hail-thumb.png" width="80" height="80" alt="hail thumbnail" /></a>
+					<p>2011 hail events by county map. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+        <li><a href="tropical.html" title="2011 Tropical Hurricanes"><img src="images/tropical-thumb.png" width="80" height="80" alt="tropical thumbnail" /></a>
+					<p>2011 tropical storms and hurricanes. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+			</ul>			
+		</div>
+	</div>
+</div>
+
+<div id='legend-content' style='display: none;'>
+  <div class='my-legend'>
+  <div class='legend-title'>2011 Tornados, Fujita Scale</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span style='background:#aaa;'></span>F0</li>
+      <li><span style='background:#06a;'></span>F1</li>
+      <li><span style='background:#080;'></span>F2</li>
+      <li><span style='background:#ee0;'></span>F3</li>
+      <li><span style='background:#f60;'></span>F4</li>
+      <li><span style='background:#f00;'></span>F5</li>
+    </ul>
+  </div>
+  <div class="legend-subtitle"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAN1wAADdcBQiibeAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAACiSURBVBiVjdChEYNAFEXRu1+soAlsFAVEIXCRkB5oIQ5HC/TA2jhmEpUCUFiaQKz4P4oZJhNCrj7izXNmBsCzqopUpE4gA1hgnFW7PIQBwJkZ4/XanJy7efBsihAnszbr+8Y9yrI4i9w/0Ra/VC+SitR7CMCDT0VqWTf9KoFMjtCaLDAeoQVGmVW7CHEPRYizaid5CMNk1n7D6z15CIP79/A3JwdN+7URa+UAAAAASUVORK5CYII=" style="margin-right: 5px;" />Fatal Tornado</div>
+  <div class='legend-source'>Source: <a href="http://www.spc.noaa.gov/gis/">NOAA/SPC</a></div>
+  </div>
+
+</div>
+
+<script type='text/javascript'>
+var map = L.mapbox.map('map', 'kb9zzw.map-cbecs91i', {minZoom: 4, maxZoom: 10, fullscreenControl: true, attributionControl: false})
+    .setView([35.3173,-87.8467], 4);
+
+map.legendControl.addLegend(document.getElementById('legend-content').innerHTML);
+L.control.scale().addTo(map);
+ 
+var tileLayer1 = L.mapbox.tileLayer('kb9zzw.2011_Tornado')
+    .addTo(map);
+var gridLayer1 = L.mapbox.gridLayer('kb9zzw.2011_Tornado')
+    .addTo(map);
+var gridControl1 = L.mapbox.gridControl(gridLayer1, {follow: true})
+    .addTo(map);
+    
+map.on('fullscreenchange', function () {
+  if (map.isFullscreen()) {
+    console.log('entered fullscreen');
+  } else {
+    console.log('exited fullscreen');
+  }
+});
+
+document.getElementById('navigation').onclick = function(e) {
+    var pos = e.target.getAttribute('data-position');
+    if (pos) {
+        var loc = pos.split(',');
+        map.setView(loc, 9);
+    }
+}
+		
+</script>
+</body>
+</html>

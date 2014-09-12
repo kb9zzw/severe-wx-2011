@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : GoodLife 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20121013
+
+-->
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+  <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+  <!--[if lte IE 8]>
+    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+  <![endif]-->
+  <style>
+    body { margin:0; padding:0; }
+    #map { width:700px; height:500px; }
+  </style>
+  <link rel="stylesheet" href="css/leaflet.fullscreen.css"/>
+  <script src="js/Leaflet.fullscreen.js"></script>
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>2011 Severe Weather Summary</title>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css' />
+  <link href='http://fonts.googleapis.com/css?family=Abel|Satisfy' rel='stylesheet' type='text/css' />
+  <link href="css/default.css" rel="stylesheet" type="text/css" media="all" />
+  <!--[if IE 6]>
+    <link href="default_ie6.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
+  
+  <style type="text/css">
+  .my-legend .legend-title {
+      text-align: left;
+      margin-bottom: 8px;
+      font-weight: bold;
+      font-size: 90%;
+      }
+    .my-legend .legend-scale ul {
+      margin: 0;
+      padding: 0px;
+      float: left;
+      list-style: none;
+      }
+    .my-legend .legend-scale ul li {
+      display: block;
+      float: left;
+      width: 37px;
+      margin-bottom: 4px;
+      margin-right: 1px;
+      text-align: center;
+      font-size: 80%;
+      list-style: none;
+      }
+    .my-legend ul.legend-labels li span {
+      display: block;
+      float: left;
+      height: 15px;
+      width: 37px;
+      }
+    .my-legend .legend-source {
+      font-size: 70%;
+      color: #999;
+      clear: both;
+      }
+    .my-legend a {
+      color: #777;
+      }
+     .my-legend .legend-subtitle {
+        font-size: 70%;
+        color: #000;
+        clear: both;
+      }
+      
+    #map-ui {
+
+    }
+
+    #map-ui ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map-ui a {
+      font-size: 13px;
+      background: #FFF;
+      color: #3C4E5A;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: 1px solid #BBB;
+      border-bottom-width: 0;
+      min-width: 138px;
+      padding: 10px;
+      text-decoration: none;
+    }
+
+  #map-ui a:hover {
+    background: #ECF5FA;
+  }
+
+  #map-ui li:last-child a {
+      border-bottom-width: 1px;
+      -webkit-border-radius: 0 0 3px 3px;
+      border-radius: 0 0 3px 3px;
+  }
+
+  #map-ui li:first-child a {
+      -webkit-border-radius: 3px 3px 0 0;
+      border-radius: 3px 3px 0 0;
+  }
+
+  #map-ui a.active {
+      background: #3887BE;
+      border-color: #3887BE;
+      border-top-color: #FFF;
+      color: #FFF;
+  }
+
+  #map-ui li:first-child a.active {
+      border-top-color: #3887BE;
+  }
+
+  #map .map-fullscreen {
+      background-color: #28353D;
+  }
+  </style>
+</head>
+<body>
+
+<div id="header-wrapper">
+	<div id="header">
+		<div id="logo">
+			<h1><a href="index.html">2011 Severe Weather Summary</a></h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li><a href="index.html" accesskey="1" title="">Home</a></li>
+				<li><a href="tornado.html" accesskey="2" title="">Tornadoes</a></li>
+				<li><a href="hail.html" accesskey="3" title="">Hail</a></li>
+        <li class="current_page_item"><a href="#" accesskey="4" title="">Tropical Storms</a></li>
+			</ul>
+    </div>
+	</div>
+</div>
+<div id="footer-wrapper">
+	<div id="footer-content">
+		<h2 style="margin: 10px; padding: 0;"><span>2011</span> Tropical Storms &amp; Hurricanes</h2>
+    
+    <div id="map-wrapper">
+      <div id="map"></div>
+      <div id="map-right" >
+        <h3>Overview</h3>
+        <p>This interactive map shows tropical storms and hurricanes that made landfall on the continental U.S. during 2011.  Individual storms can be toggled on or off using the layer selector below.  Hover over storm positions to show storm summary information.
+        <h3 style="margin-top: 15px;">Toggle Storm Layers</h3>
+        <ul id='map-ui'>
+          <li><a href="#" id="irene" class="active">Hurricane Irene</a></li>
+          <li><a href="#" id="lee">Tropical Storm Lee</a></li>
+          <li><a href="#" id="don">Tropical Storm Don</a></li>
+        </ul>
+        <h3 style="margin-top: 15px;">Source</h3>
+        <p>Data for this map was obtained from: <br /><a href="http://www.nhc.noaa.gov/gis/" title="NOAA/NHC GIS Data">NOAA National Hurricane Center</a>.</p>
+      </div>
+    </div>
+    <div id="fbox1" style="width: 1000px;">
+      
+    </div>
+  </div>
+</div>
+<div id="page-wrapper">
+	<div id="page">
+		<div id="content">
+			<div>
+				<h2>About this project</h2>
+				<p>This website was created by <a href="mailto:jdburrou@ncsu.edu">Jon Burroughs</a> as an assignment for <a href="http://courses.ncsu.edu/gis515/lec/651/" title="NCSU GIS 515">Computer Cartography (GIS 515)</a> at <a href="http://gis.ncsu.edu/academic/how_to_apply/how_to_apply.php" title="NCSU GIST Program">North Carolina State University</a>.  
+        <p><strong>Sources</strong> for  data, photographs were provided by <a href="http://www.noaa.gov" title="NOAA">NOAA</a>, specifically the following sites:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.spc.noaa.gov/gis/svrgis/" title="SPC GIS Data">Storm Prediction Center - GIS Data</a></li>
+          <li><a href="http://www.nhc.noaa.gov/gis" title="NHC GIS Data">National Hurricane Center - GIS Data</a></li>
+          <li><a href="http://www.noaa.gov/extreme2011/" title="NOAA: Extreme Weather 2011">NOAA Extreme Weather 2011</a></li>
+          <li><a href="http://www.weather.gov/" title="National Weather Service">National Weather Service</a></li>
+        </ul>
+        </p>
+				<p>&nbsp;</p>
+        <p><strong>Technologies</strong> used in the creation of this project, include:
+        <ul style="margin-left: 50px;">
+          <li><a href="http://www.mapbox.com" title="MapBox">MapBox</a> - used for interactive mapping</li>
+          <li><a href="http://drive.google.com" title="Google Drive">Google Drive</a> - used for charting</li>
+          <li><a href="http://www.esri.com" title="ESRI">ESRI ArcGIS</a> - used for initial data processing</li>
+          <li><a href="http://www.slidorion.com/" title="Slidorion">Slidorion</a> - used for image slider</a>
+          <li><a href="http://www.freecsstemplates.org/" title="FreeCSSTemplates">FreeCSSTemplates</a> - used for page layout and design</li>
+        </ul>
+
+			</div>
+		</div>
+		<div id="sidebar">
+			<h2>Maps and charts</h2>
+        <ul class="style3">
+				<li><a href="tornado.html" title="2011 Tornado Summary"><img src="images/tornado-thumb.png" width="80" height="80" alt="tornado track thumbnail" /></a>
+					<p>2011 map of tornado activity, with charts and statistics. </p>
+          <p class="posted">Created July 21, 2013</p>
+				</li>
+				<li><a href="hail.html" title="2011 Hail Summary"><img src="images/hail-thumb.png" width="80" height="80" alt="hail thumbnail" /></a>
+					<p>2011 hail events by county map. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+        <li><a href="tropical.html" title="2011 Tropical Hurricanes"><img src="images/tropical-thumb.png" width="80" height="80" alt="tropical thumbnail" /></a>
+					<p>2011 tropical storms and hurricanes. </p>
+					<p class="posted">Created July 21, 2013</p>
+				</li>
+			</ul>			
+		</div>
+	</div>
+</div>
+
+<div id='legend-content' style='display: none;'>
+  <div class='my-legend'>
+  <div class='legend-title'>2011 Tropical Storms</div>
+  <div class='legend-scale'>
+    <div class="legend-subtitle">Wind Swaths</div>
+    <ul class='legend-labels'>
+      <li><span style='background:#0f0;'></span>34kt</li>
+      <li><span style='background:#ff0;'></span>50kt</li>
+      <li><span style='background:#f00;'></span>64kt</li>
+    </ul>
+  </div>
+  <div class="legend-subtitle"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA3XAAAN1wFCKJt4AAAAB3RJTUUH3QcWAgQnZ8TVAwAAANVJREFUKM+tkjEKwkAURGd/EcFGPEHQykK0FOyENGK5yRUkV7BLF4+QO5gtxUawEywVi1RKjmAjuMVfK0HCbgjolH+Yx/AZgRodpAx8orgNjADgCVxK5mym1N6VES7jHIbJQIiVB3jfdw3owph0nOdJY+BBymBKtK3CvqFH5oWtKdkCPlHsggGAB3g+UWxt2F2uTfW4e1wx4Vfde3GiFuadIRo1/EXWH96iKO8Bsi54B1R/swkbNSyZMw1oF0wDumTObJ4VOFNqXxiT2qCf2bi2KP497DeJT1Fd1L/J3QAAAABJRU5ErkJggg==" style="margin-right: 5px;" />Hurricane Path &amp; Position</div>
+  <div class='legend-source'>Source: <a href="http://www.nhc.noaa.gov/gis/">NOAA/NHC</a></div>
+  </div>
+</div>
+
+<script type='text/javascript'>
+
+var map = L.mapbox.map('map', 'kb9zzw.map-cbecs91i', {minZoom: 4, maxZoom: 9, fullscreenControl: true, attributionControl: false})
+    .setView([29.075375179558346, -73.0361328125], 4);
+
+map.legendControl.addLegend(document.getElementById('legend-content').innerHTML);
+L.control.scale().addTo(map);
+ 
+var tileLayer1 = L.mapbox.tileLayer('kb9zzw.Irene')
+    .addTo(map);
+var gridLayer1 = L.mapbox.gridLayer('kb9zzw.Irene')
+    .addTo(map);
+var gridControl1 = L.mapbox.gridControl(gridLayer1, {follow: true})
+    .addTo(map);
+    
+var tileLayer2 = L.mapbox.tileLayer('kb9zzw.Don');
+var gridLayer2 = L.mapbox.gridLayer('kb9zzw.Don');
+var gridControl2 = L.mapbox.gridControl(gridLayer2, {follow: true})
+    .addTo(map);
+    
+var tileLayer3 = L.mapbox.tileLayer('kb9zzw.Lee');
+var gridLayer3 = L.mapbox.gridLayer('kb9zzw.Lee');
+var gridControl3 = L.mapbox.gridControl(gridLayer3, {follow: true})
+    .addTo(map);
+    
+map.on('fullscreenchange', function () {
+  if (map.isFullscreen()) {
+    console.log('entered fullscreen');
+  } else {
+    console.log('exited fullscreen');
+  }
+});
+
+document.getElementById('irene').onclick = function() {
+    if (this.className === 'active') {
+        map.removeLayer(tileLayer1);
+        map.removeLayer(gridLayer1);
+        map.removeControl(gridControl1);
+        this.className = '';
+    } else {
+        map.addLayer(tileLayer1);
+        map.addLayer(gridLayer1);
+        map.addControl(gridControl1);
+        this.className = 'active';
+    }
+};
+
+document.getElementById('don').onclick = function() {
+    if (this.className === 'active') {
+        map.removeLayer(tileLayer2);
+        map.removeLayer(gridLayer2);
+        map.removeControl(gridControl2);
+        this.className = '';
+    } else {
+        map.addLayer(tileLayer2);
+        map.addLayer(gridLayer2);
+        map.addControl(gridControl2);
+        this.className = 'active';
+    }
+};
+document.getElementById('lee').onclick = function() {
+    if (this.className === 'active') {
+        map.removeLayer(tileLayer3);
+        map.removeLayer(gridLayer3);
+        map.removeControl(gridControl3);
+        this.className = '';
+    } else {
+        map.addLayer(tileLayer3);
+        map.addLayer(gridLayer3);
+        map.addControl(gridControl3);
+        this.className = 'active';
+    }
+};
+</script>
+</body>
+</html>
